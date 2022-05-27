@@ -23,7 +23,7 @@
       "type": "object",
       "additionalProperties": false,
       "patternProperties": {
-        "hasura|auth|storage|mailhog|minio": {
+        "hasura|postgres|auth|storage|mailhog|minio": {
           "type": "object",
           "properties": {
             "port": {
