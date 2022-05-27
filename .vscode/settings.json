@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "./nhost.schema.json": "nhost/config.yaml"
+  }
+}
