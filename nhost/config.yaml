@@ -1,28 +1,33 @@
 metadata_directory: metadata
 services:
-  mailhog:
-    port: 8025
   hasura:
-    version: v2.2.0
     environment:
       hasura_graphql_enable_remote_schema_permissions: false
-  auth:
-    version: 0.7.1
+  minio:
+    environment:
+      minio_root_password: minioaccesskey123123
+      minio_root_user: minioaccesskey123123
+  postgres:
+    environment:
+      postgres_password: postgres
+      postgres_user: postgres
 auth:
-  log_level: debug
   access_control:
     email:
       allowed_email_domains: ''
       allowed_emails: ''
       blocked_email_domains: ''
       blocked_emails: ''
-    allowed_redirect_urls: ''
+    url:
+      allowed_redirect_urls: ''
   anonymous_users_enabled: false
   client_url: http://localhost:3000
   disable_new_users: false
   email:
+    enabled: false
     passwordless:
-      enabled: true
+      enabled: false
+    signin_email_verified_required: true
     template_fetch_url: ''
   gravatar:
     default: ''
@@ -98,18 +103,20 @@ auth:
       enabled: false
       scope: wl.basic,wl.emails,wl.contacts_emails
   sms:
+    enabled: false
     passwordless:
-      enabled: true
-    provider: twilio
-    twilio:
-      account_sid: ''
-      auth_token: ''
-      messaging_service_id: ''
+      enabled: false
+    provider:
+      twilio:
+        account_sid: ''
+        auth_token: ''
+        from: ''
+        messaging_service_id: ''
   smtp:
     host: nhost_mailhog
     method: ''
     pass: password
-    port: 1807
+    port: 1247
     secure: false
     sender: hasura-auth@example.com
     user: user
@@ -125,7 +132,6 @@ auth:
     mfa:
       enabled: false
       issuer: nhost
-    signin_email_verified_required: true
 storage:
   force_download_for_content_types: text/html,application/javascript
 version: 3
