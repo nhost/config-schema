@@ -18,9 +18,9 @@ auth:
       allowed_emails: ''
       blocked_email_domains: ''
       blocked_emails: ''
-    url:
-      allowed_redirect_urls: ''
-  anonymous_users_enabled: false
+    allowed_redirect_urls: ''
+  anonymous_users:
+    enabled: false
   client_url: http://localhost:3000
   disable_new_users: false
   email:
@@ -28,16 +28,18 @@ auth:
     passwordless:
       enabled: false
     signin_email_verified_required: true
-    template_fetch_url: ''
+    template:
+      fetch_url: ''
   gravatar:
     default: ''
     enabled: true
     rating: ''
   locale:
-    allowed: en
+    allowed_locales: en
     default: en
   password:
-    hibp_enabled: false
+    hibp:
+      enabled: false
     min_length: 3
   provider:
     apple:
@@ -106,32 +108,30 @@ auth:
     enabled: false
     passwordless:
       enabled: false
-    provider:
-      twilio:
-        account_sid: ''
-        auth_token: ''
-        from: ''
-        messaging_service_id: ''
+    provider: 'twilio'
+    twilio:
+      account_sid: ''
+      auth_token: ''
+      from: ''
+      messaging_service_id: ''
   smtp:
     host: nhost_mailhog
-    method: ''
+    auth_method: ''
     pass: password
     port: 1247
     secure: false
     sender: hasura-auth@example.com
     user: user
-  token:
-    access:
-      expires_in: 900
-    refresh:
-      expires_in: 43200
+  access_token:
+    expires_in: 900
+  refresh_token:
+    expires_in: 43200
   user:
-    allowed_roles: user,me
     default_allowed_roles: user,me
     default_role: user
-    mfa:
-      enabled: false
-      issuer: nhost
-storage:
-  force_download_for_content_types: text/html,application/javascript
+  mfa:
+    enabled: false
+    totp_issuer: nhost
+storage: {}
+
 version: 3
